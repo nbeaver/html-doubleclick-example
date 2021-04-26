@@ -1,0 +1,77 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8">
+    <title>Example of dblclick</title>
+<style type="text/css">
+table{
+  border:1px solid;
+}
+table td {
+  border:1px solid;
+}
+.toggle {
+  background: #AAFFAA;
+}
+</style>
+<script>
+function dblclickHandler(e) {
+  console.log("got double click");
+  var sender = e.srcElement;
+  console.log(sender.state);
+  if (sender.state === "off") {
+    sender.state = "on";
+    sender.style.background = "yellow";
+  } else {
+    sender.state = "off";
+    sender.style.background = '#AAFFAA';
+  }
+}
+function clickHandler(e) {
+  console.log("got click");
+  var sender = e.srcElement;
+  console.log(sender.state);
+  if (sender.state === "off") {
+    sender.state = "on";
+    sender.style.background = "green";
+  } else {
+    sender.state = "off";
+    sender.style.background = '#AAFFAA';
+  }
+}
+window.onload = function() {
+  var toggle_elements = document.getElementsByClassName('toggle');
+  for (var i = 0; i < toggle_elements.length; i++) {
+    var elem = toggle_elements[i];
+    elem.addEventListener('dblclick', dblclickHandler);
+    elem.addEventListener('click', clickHandler);
+    elem.state = 'off';
+  }
+}
+</script>
+  </head>
+  <body>
+    <div>
+      <table>
+        <thead>
+          <tr><th>#</th><th>Month</th></tr>
+        </thead>
+        <tbody>
+          <tr><td>1</td><td class="toggle">January</td></tr>
+          <tr><td>2</td><td class="toggle">February</td></tr>
+          <tr><td>3</td><td class="toggle">March</td></tr>
+          <tr><td>4</td><td class="toggle">April</td></tr>
+          <tr><td>5</td><td class="toggle">May</td></tr>
+          <tr><td>6</td><td class="toggle">June</td></tr>
+          <tr><td>7</td><td class="toggle">July</td></tr>
+          <tr><td>8</td><td class="toggle">August</td></tr>
+          <tr><td>9</td><td class="toggle">September</td></tr>
+          <tr><td>10</td><td class="toggle">October</td></tr>
+          <tr><td>11</td><td class="toggle">November</td></tr>
+          <tr><td>12</td><td class="toggle">December</td></tr>
+        </tbody>
+      </table>
+    </div>
+    <a href="https://developer.mozilla.org/en-US/docs/Web/API/Element/dblclick_event">Element: dblclick event</a>
+  </body>
+</html>
